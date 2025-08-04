@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import TableEntry from '@/components/TableEntry';
 import MenuDisplay from '@/components/MenuDisplay';
-import OrderStatus from '@/components/OrderStatus';
+import EnhancedOrderStatus from '@/components/EnhancedOrderStatus';
 import AdminDashboard from '@/components/AdminDashboard';
 import ChefPanel from '@/components/ChefPanel';
 import { Users, ChefHat, Shield, UtensilsCrossed } from 'lucide-react';
@@ -15,11 +15,14 @@ interface CartItem {
   name: string;
   description: string;
   price: number;
-  image: string;
+  images: string[];
   category: string;
   rating: number;
   prepTime: string;
   quantity: number;
+  isPopular?: boolean;
+  isVegetarian?: boolean;
+  isSpicy?: boolean;
 }
 
 const Index = () => {
@@ -38,6 +41,10 @@ const Index = () => {
   };
 
   const handleBackToMenu = () => {
+    setCurrentView('menu');
+  };
+
+  const handleAddMoreItems = () => {
     setCurrentView('menu');
   };
 
@@ -109,7 +116,7 @@ const Index = () => {
     case 'menu':
       return <MenuDisplay tableNumber={tableNumber} onProceedToOrder={handleProceedToOrder} />;
     case 'order-status':
-      return <OrderStatus tableNumber={tableNumber} order={currentOrder} onBackToMenu={handleBackToMenu} />;
+      return <EnhancedOrderStatus tableNumber={tableNumber} order={currentOrder} onBackToMenu={handleBackToMenu} onAddMoreItems={handleAddMoreItems} />;
     case 'admin':
       return <AdminDashboard />;
     case 'chef':
