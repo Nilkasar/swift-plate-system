@@ -142,20 +142,63 @@ const menuItems: MenuItem[] = [
     category: 'Beverages',
     rating: 4.8,
     prepTime: '5 min'
+  },
+  
+  // More Starters
+  {
+    id: '10',
+    name: 'Mushroom Soup',
+    description: 'Creamy wild mushroom soup with truffle oil and herbs',
+    price: 12,
+    images: [bruschetta],
+    category: 'Starters',
+    rating: 4.4,
+    prepTime: '8 min',
+    isVegetarian: true
+  },
+  
+  // More Mains
+  {
+    id: '11',
+    name: 'Lamb Rack',
+    description: 'Herb-crusted lamb rack with rosemary jus and roasted vegetables',
+    price: 42,
+    images: [wagyuSteak],
+    category: 'Mains',
+    rating: 4.9,
+    prepTime: '35 min'
+  },
+  {
+    id: '12',
+    name: 'Vegetarian Pasta',
+    description: 'Fresh pasta with seasonal vegetables and pesto sauce',
+    price: 22,
+    images: [truffleRisotto],
+    category: 'Mains',
+    rating: 4.6,
+    prepTime: '18 min',
+    isVegetarian: true,
+    isPopular: true
   }
 ];
 
 const categories = ['All', 'Starters', 'Mains', 'Desserts', 'Beverages'];
+const dietaryFilters = ['All', 'Vegetarian', 'Non-Vegetarian'];
 
 const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedDietary, setSelectedDietary] = useState('All');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState<Record<string, number>>({});
   const { toast } = useToast();
 
-  const filteredItems = selectedCategory === 'All' 
-    ? menuItems 
-    : menuItems.filter(item => item.category === selectedCategory);
+  const filteredItems = menuItems.filter(item => {
+    const categoryMatch = selectedCategory === 'All' || item.category === selectedCategory;
+    const dietaryMatch = selectedDietary === 'All' || 
+      (selectedDietary === 'Vegetarian' && item.isVegetarian) ||
+      (selectedDietary === 'Non-Vegetarian' && !item.isVegetarian);
+    return categoryMatch && dietaryMatch;
+  });
 
   const addToCart = (item: MenuItem) => {
     setCart(prev => {
@@ -243,21 +286,41 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
         </div>
 
         {/* Enhanced Category Filter */}
-        <div className="flex flex-wrap gap-3 mb-8 justify-center animate-slide-up">
-          {categories.map(category => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className={`transition-all duration-300 ${
-                selectedCategory === category 
-                  ? "btn-primary scale-105" 
-                  : "btn-outline hover:scale-105"
-              }`}
-            >
-              {category}
-            </Button>
-          ))}
+        <div className="space-y-4 mb-8 animate-slide-up">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map(category => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                className={`transition-all duration-300 ${
+                  selectedCategory === category 
+                    ? "btn-primary scale-105" 
+                    : "btn-outline hover:scale-105"
+                }`}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+          
+          <div className="flex flex-wrap gap-3 justify-center">
+            {dietaryFilters.map(filter => (
+              <Button
+                key={filter}
+                variant={selectedDietary === filter ? "secondary" : "outline"}
+                size="sm"
+                onClick={() => setSelectedDietary(filter)}
+                className={`transition-all duration-300 ${
+                  selectedDietary === filter 
+                    ? "btn-secondary scale-105" 
+                    : "btn-outline hover:scale-105"
+                }`}
+              >
+                {filter}
+              </Button>
+            ))}
+          </div>
         </div>
 
         {/* Enhanced Menu Items */}

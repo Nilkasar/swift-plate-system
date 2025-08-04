@@ -199,24 +199,22 @@ const EnhancedOrderStatus = ({ tableNumber, order, onBackToMenu, onAddMoreItems 
           </CardContent>
         </Card>
 
-        {/* Action Buttons */}
-        {currentStatus === 'completed' && !showFeedback && (
+        {/* Action Buttons - Show when order is ready or completed but not closed */}
+        {(currentStatus === 'ready' || currentStatus === 'completed') && (
           <div className="flex gap-4 mb-6 animate-bounce-in">
-            {canAddMore && (
-              <Button
-                onClick={onAddMoreItems}
-                className="btn-outline flex-1"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                Add More Items
-              </Button>
-            )}
+            <Button
+              onClick={onAddMoreItems}
+              className="btn-outline flex-1"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add More Items
+            </Button>
             <Button
               onClick={handleCloseOrder}
               className="btn-primary flex-1"
             >
               <CheckCircle className="w-4 h-4 mr-2" />
-              Close Order
+              Close Order & Pay
             </Button>
           </div>
         )}
