@@ -18,12 +18,25 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'playfair': ['Playfair Display', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				/* Restaurant Brand Colors */
+				'wine-primary': 'hsl(var(--wine-primary))',
+				'wine-light': 'hsl(var(--wine-light))',
+				'gold-accent': 'hsl(var(--gold-accent))',
+				'gold-light': 'hsl(var(--gold-light))',
+				'cream-base': 'hsl(var(--cream-base))',
+				'warm-grey': 'hsl(var(--warm-grey))',
+				'deep-brown': 'hsl(var(--deep-brown))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
