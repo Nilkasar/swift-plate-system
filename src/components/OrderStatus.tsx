@@ -51,7 +51,7 @@ const OrderStatus = ({ tableNumber, order, onBackToMenu }: OrderStatusProps) => 
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream-base to-warm-grey">
+    <div className="min-h-screen bg-gradient-to-br from-cosmic-dark via-cosmic-accent to-cosmic-dark">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center gap-4 mb-6 animate-fade-in">
@@ -60,8 +60,8 @@ const OrderStatus = ({ tableNumber, order, onBackToMenu }: OrderStatusProps) => 
             Back to Menu
           </Button>
           <div>
-            <h1 className="text-3xl font-playfair font-bold text-deep-brown">Order Status</h1>
-            <p className="text-warm-grey">Table {tableNumber} • {orderTime.toLocaleTimeString()}</p>
+            <h1 className="text-3xl font-playfair font-bold text-cosmic-light bg-gradient-to-r from-neon-purple to-golden-glow bg-clip-text text-transparent">Order Status</h1>
+            <p className="text-cosmic-light/70">Table {tableNumber} • {orderTime.toLocaleTimeString()}</p>
           </div>
         </div>
 

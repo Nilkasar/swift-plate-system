@@ -8,56 +8,59 @@
 
 @layer base {
   :root {
-    /* Restaurant Color Palette */
-    --background: 35 20% 98%;
-    --foreground: 25 15% 15%;
+    /* Cosmic Theme Color Palette */
+    --background: 280 15% 8%;
+    --foreground: 35 50% 95%;
     
-    /* Premium Brand Colors */
-    --wine-primary: 0 45% 35%;
-    --wine-light: 0 35% 45%;
-    --gold-accent: 45 90% 55%;
-    --gold-light: 45 85% 75%;
+    /* Neon Brand Colors */
+    --neon-purple: 280 100% 70%;
+    --neon-pink: 330 100% 70%;
+    --electric-blue: 220 100% 70%;
+    --cyber-green: 120 100% 60%;
+    --golden-glow: 45 100% 60%;
+    --warm-orange: 25 100% 65%;
     
-    /* Earth Tones */
-    --cream-base: 35 25% 96%;
-    --warm-grey: 25 10% 85%;
-    --deep-brown: 25 25% 25%;
+    /* Base Tones */
+    --cosmic-dark: 280 15% 8%;
+    --cosmic-light: 35 50% 95%;
+    --cosmic-accent: 300 20% 20%;
 
     /* Semantic Design System */
-    --card: var(--cream-base);
+    --card: 285 25% 12%;
     --card-foreground: var(--foreground);
 
-    --popover: var(--cream-base);
+    --popover: 285 25% 12%;
     --popover-foreground: var(--foreground);
 
-    --primary: var(--wine-primary);
-    --primary-foreground: var(--cream-base);
+    --primary: var(--neon-purple);
+    --primary-foreground: var(--cosmic-dark);
 
-    --secondary: var(--warm-grey);
-    --secondary-foreground: var(--deep-brown);
+    --secondary: 300 40% 25%;
+    --secondary-foreground: var(--cosmic-light);
 
-    --muted: var(--warm-grey);
-    --muted-foreground: var(--deep-brown);
+    --muted: var(--cosmic-accent);
+    --muted-foreground: 35 25% 70%;
 
-    --accent: var(--gold-accent);
-    --accent-foreground: var(--deep-brown);
+    --accent: var(--golden-glow);
+    --accent-foreground: var(--cosmic-dark);
 
-    --destructive: 0 65% 50%;
-    --destructive-foreground: var(--cream-base);
+    --destructive: 0 75% 60%;
+    --destructive-foreground: var(--cosmic-light);
 
-    --border: var(--warm-grey);
-    --input: var(--cream-base);
-    --ring: var(--gold-accent);
+    --border: var(--cosmic-accent);
+    --input: var(--cosmic-accent);
+    --ring: var(--neon-purple);
     
-    /* Premium Gradients */
-    --gradient-wine: linear-gradient(135deg, hsl(var(--wine-primary)), hsl(var(--wine-light)));
-    --gradient-gold: linear-gradient(135deg, hsl(var(--gold-accent)), hsl(var(--gold-light)));
-    --gradient-warm: linear-gradient(180deg, hsl(var(--cream-base)), hsl(var(--warm-grey)));
+    /* Neon Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--electric-blue)), hsl(var(--cyber-green)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--golden-glow)), hsl(var(--warm-orange)));
     
-    /* Elegant Shadows */
-    --shadow-premium: 0 8px 32px -8px hsl(var(--wine-primary) / 0.15);
-    --shadow-card: 0 4px 20px -4px hsl(var(--deep-brown) / 0.1);
-    --shadow-gold: 0 4px 16px -4px hsl(var(--gold-accent) / 0.3);
+    /* Glowing Shadows */
+    --shadow-neon: 0 0 30px hsl(var(--neon-purple) / 0.5), 0 10px 40px hsl(var(--neon-purple) / 0.3);
+    --shadow-cyber: 0 0 30px hsl(var(--electric-blue) / 0.5), 0 10px 40px hsl(var(--cyber-green) / 0.3);
+    --shadow-golden: 0 0 30px hsl(var(--golden-glow) / 0.6), 0 10px 40px hsl(var(--golden-glow) / 0.4);
+    --shadow-elegant: 0 4px 25px hsl(var(--cosmic-accent) / 0.4);
     
     /* Smooth Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -137,26 +140,34 @@
 }
 
 @layer components {
-  /* Premium Button Variants */
-  .btn-wine {
-    @apply bg-gradient-to-r from-[hsl(var(--wine-primary))] to-[hsl(var(--wine-light))] text-[hsl(var(--primary-foreground))] shadow-[var(--shadow-premium)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-gold)] hover:scale-105;
+  /* Neon Button Variants */
+  .btn-neon {
+    @apply bg-gradient-to-r from-[hsl(var(--neon-purple))] to-[hsl(var(--neon-pink))] text-[hsl(var(--cosmic-light))] shadow-[var(--shadow-neon)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-cyber)] hover:scale-105 font-semibold;
   }
   
-  .btn-gold {
-    @apply bg-gradient-to-r from-[hsl(var(--gold-accent))] to-[hsl(var(--gold-light))] text-[hsl(var(--accent-foreground))] shadow-[var(--shadow-gold)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-premium)] hover:scale-105;
+  .btn-cyber {
+    @apply bg-gradient-to-r from-[hsl(var(--electric-blue))] to-[hsl(var(--cyber-green))] text-[hsl(var(--cosmic-dark))] shadow-[var(--shadow-cyber)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-golden)] hover:scale-105 font-semibold;
+  }
+  
+  .btn-golden {
+    @apply bg-gradient-to-r from-[hsl(var(--golden-glow))] to-[hsl(var(--warm-orange))] text-[hsl(var(--cosmic-dark))] shadow-[var(--shadow-golden)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-neon)] hover:scale-105 font-semibold;
   }
   
   .btn-elegant {
-    @apply bg-[hsl(var(--cream-base))] text-[hsl(var(--deep-brown))] border border-[hsl(var(--warm-grey))] shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-premium)] hover:bg-[hsl(var(--warm-grey))];
+    @apply bg-[hsl(var(--cosmic-accent))] text-[hsl(var(--cosmic-light))] border border-[hsl(var(--cosmic-accent))] shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-neon)] hover:bg-[hsl(var(--cosmic-accent)/0.8)];
   }
   
   /* Premium Card Styles */
   .card-premium {
-    @apply bg-[hsl(var(--cream-base))] border border-[hsl(var(--warm-grey))] shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-premium)];
+    @apply bg-[hsl(var(--cosmic-accent)/0.3)] border border-[hsl(var(--cosmic-accent))] shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-neon)] backdrop-blur-sm;
   }
   
-  .card-gold {
-    @apply bg-gradient-to-br from-[hsl(var(--cream-base))] to-[hsl(var(--gold-light)/0.1)] border border-[hsl(var(--gold-accent)/0.3)] shadow-[var(--shadow-gold)];
+  .card-neon {
+    @apply bg-gradient-to-br from-[hsl(var(--neon-purple)/0.2)] to-[hsl(var(--neon-pink)/0.2)] border border-[hsl(var(--neon-purple)/0.5)] shadow-[var(--shadow-neon)] backdrop-blur-sm;
+  }
+  
+  .card-cyber {
+    @apply bg-gradient-to-br from-[hsl(var(--electric-blue)/0.2)] to-[hsl(var(--cyber-green)/0.2)] border border-[hsl(var(--electric-blue)/0.5)] shadow-[var(--shadow-cyber)] backdrop-blur-sm;
   }
   
   /* Animation Classes */
@@ -174,6 +185,22 @@
   
   .animate-bounce-in {
     animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  .animate-order-accepted {
+    animation: orderAccepted 1s ease-out;
+  }
+  
+  .animate-order-placed {
+    animation: orderPlaced 1.2s ease-out;
+  }
+  
+  .animate-status-update {
+    animation: statusUpdate 0.8s ease-out;
   }
 }
 
@@ -222,5 +249,64 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--neon-purple) / 0.8), 0 0 60px hsl(var(--neon-pink) / 0.4);
+  }
+}
+
+@keyframes orderAccepted {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--cyber-green) / 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 20px hsl(var(--cyber-green) / 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--cyber-green) / 0);
+  }
+}
+
+@keyframes orderPlaced {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes statusUpdate {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: brightness(1.5) drop-shadow(0 0 20px hsl(var(--golden-glow)));
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
   }
 }

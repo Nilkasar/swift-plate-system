@@ -29,14 +29,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				
-				/* Restaurant Brand Colors */
-				'wine-primary': 'hsl(var(--wine-primary))',
-				'wine-light': 'hsl(var(--wine-light))',
-				'gold-accent': 'hsl(var(--gold-accent))',
-				'gold-light': 'hsl(var(--gold-light))',
-				'cream-base': 'hsl(var(--cream-base))',
-				'warm-grey': 'hsl(var(--warm-grey))',
-				'deep-brown': 'hsl(var(--deep-brown))',
+				/* Cosmic Theme Colors */
+				'neon-purple': 'hsl(var(--neon-purple))',
+				'neon-pink': 'hsl(var(--neon-pink))',
+				'electric-blue': 'hsl(var(--electric-blue))',
+				'cyber-green': 'hsl(var(--cyber-green))',
+				'golden-glow': 'hsl(var(--golden-glow))',
+				'warm-orange': 'hsl(var(--warm-orange))',
+				'cosmic-dark': 'hsl(var(--cosmic-dark))',
+				'cosmic-light': 'hsl(var(--cosmic-light))',
+				'cosmic-accent': 'hsl(var(--cosmic-accent))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'

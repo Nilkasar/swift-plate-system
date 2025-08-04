@@ -126,23 +126,23 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream-base to-warm-grey">
+    <div className="min-h-screen bg-gradient-to-br from-cosmic-dark via-cosmic-accent to-cosmic-dark">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-6 animate-fade-in">
           <div>
-            <h1 className="text-3xl font-playfair font-bold text-deep-brown">Menu</h1>
-            <p className="text-warm-grey">Table {tableNumber}</p>
+            <h1 className="text-3xl font-playfair font-bold text-cosmic-light bg-gradient-to-r from-neon-purple to-golden-glow bg-clip-text text-transparent">Cosmic Menu</h1>
+            <p className="text-cosmic-light/70">Table {tableNumber}</p>
           </div>
           <Button
             onClick={() => cart.length > 0 && onProceedToOrder(cart)}
-            className="btn-wine relative"
+            className="btn-neon relative animate-pulse-glow"
             disabled={cart.length === 0}
           >
             <ShoppingCart className="w-5 h-5 mr-2" />
             Cart
             {getTotalItems() > 0 && (
-              <Badge className="absolute -top-2 -right-2 bg-gold-accent text-deep-brown">
+              <Badge className="absolute -top-2 -right-2 bg-golden-glow text-cosmic-dark animate-order-accepted">
                 {getTotalItems()}
               </Badge>
             )}
@@ -156,7 +156,7 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
               onClick={() => setSelectedCategory(category)}
-              className={selectedCategory === category ? "btn-wine" : "btn-elegant"}
+              className={selectedCategory === category ? "btn-neon" : "btn-elegant"}
             >
               {category}
             </Button>
@@ -185,15 +185,15 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
                 
                 <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl font-playfair text-deep-brown">
+                    <CardTitle className="text-xl font-playfair text-cosmic-light">
                       {item.name}
                     </CardTitle>
-                    <span className="text-2xl font-bold text-wine-primary">${item.price}</span>
+                    <span className="text-2xl font-bold text-golden-glow">${item.price}</span>
                   </div>
                   
-                  <div className="flex items-center gap-4 text-sm text-warm-grey">
+                  <div className="flex items-center gap-4 text-sm text-cosmic-light/70">
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-gold-accent text-gold-accent" />
+                      <Star className="w-4 h-4 fill-golden-glow text-golden-glow" />
                       {item.rating}
                     </div>
                     <div className="flex items-center gap-1">
@@ -204,7 +204,7 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
                 </CardHeader>
                 
                 <CardContent>
-                  <p className="text-deep-brown mb-4">{item.description}</p>
+                  <p className="text-cosmic-light/80 mb-4">{item.description}</p>
                   
                   {cartItem ? (
                     <div className="flex items-center justify-between">
@@ -217,7 +217,7 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
                         >
                           <Minus className="w-4 h-4" />
                         </Button>
-                        <span className="font-medium text-deep-brown min-w-[2rem] text-center">
+                        <span className="font-medium text-cosmic-light min-w-[2rem] text-center">
                           {cartItem.quantity}
                         </span>
                         <Button
@@ -229,14 +229,14 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
                           <Plus className="w-4 h-4" />
                         </Button>
                       </div>
-                      <span className="font-bold text-wine-primary">
+                      <span className="font-bold text-neon-purple">
                         ${(item.price * cartItem.quantity).toFixed(2)}
                       </span>
                     </div>
                   ) : (
                     <Button
                       onClick={() => addToCart(item)}
-                      className="w-full btn-wine"
+                      className="w-full btn-cyber animate-order-placed"
                     >
                       <Plus className="w-4 h-4 mr-2" />
                       Add to Cart
@@ -250,7 +250,7 @@ const MenuDisplay = ({ tableNumber, onProceedToOrder }: MenuDisplayProps) => {
 
         {/* Cart Summary */}
         {cart.length > 0 && (
-          <Card className="card-gold animate-bounce-in sticky bottom-4">
+          <Card className="card-neon animate-bounce-in sticky bottom-4">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
