@@ -1,55 +1,20 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import TableEntry from '@/components/TableEntry';
-import MenuDisplay from '@/components/MenuDisplay';
-import EnhancedOrderStatus from '@/components/EnhancedOrderStatus';
 import AdminDashboard from '@/components/AdminDashboard';
 import ChefPanel from '@/components/ChefPanel';
 import { Users, ChefHat, Shield, UtensilsCrossed } from 'lucide-react';
 
-type View = 'entry' | 'menu' | 'order-status' | 'admin' | 'chef';
-
-interface CartItem {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  images: string[];
-  category: string;
-  rating: number;
-  prepTime: string;
-  quantity: number;
-  isPopular?: boolean;
-  isVegetarian?: boolean;
-  isSpicy?: boolean;
-}
+type View = 'landing' | 'admin' | 'chef';
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<View>('entry');
-  const [tableNumber, setTableNumber] = useState('');
-  const [currentOrder, setCurrentOrder] = useState<CartItem[]>([]);
+  const navigate = useNavigate();
+  const [currentView, setCurrentView] = useState<View>('landing');
 
-  const handleTableSubmit = (table: string) => {
-    setTableNumber(table);
-    setCurrentView('menu');
-  };
-
-  const handleProceedToOrder = (cart: CartItem[]) => {
-    setCurrentOrder(cart);
-    setCurrentView('order-status');
-  };
-
-  const handleBackToMenu = () => {
-    setCurrentView('menu');
-  };
-
-  const handleAddMoreItems = () => {
-    setCurrentView('menu');
-  };
 
   // Landing page with role selection
-  if (currentView === 'entry' && !tableNumber) {
+  if (currentView === 'landing') {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <div className="w-full max-w-4xl animate-fade-in">
@@ -65,7 +30,7 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Customer Entry */}
-            <Card className="card-premium hover:scale-105 transition-transform cursor-pointer animate-slide-up" onClick={() => handleTableSubmit('')}>
+            <Card className="card-premium hover:scale-105 transition-transform cursor-pointer animate-slide-up" onClick={() => navigate('/order')}>
               <CardContent className="p-8 text-center">
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 shadow-[var(--shadow-primary)]">
                   <Users className="w-8 h-8 text-primary-foreground" />
@@ -111,18 +76,12 @@ const Index = () => {
 
   // Route to different views
   switch (currentView) {
-    case 'entry':
-      return <TableEntry onTableSubmit={handleTableSubmit} />;
-    case 'menu':
-      return <MenuDisplay tableNumber={tableNumber} onProceedToOrder={handleProceedToOrder} />;
-    case 'order-status':
-      return <EnhancedOrderStatus tableNumber={tableNumber} order={currentOrder} onBackToMenu={handleBackToMenu} onAddMoreItems={handleAddMoreItems} />;
     case 'admin':
       return <AdminDashboard />;
     case 'chef':
       return <ChefPanel />;
     default:
-      return <TableEntry onTableSubmit={handleTableSubmit} />;
+      return null; // This will show the landing page
   }
 };
 
